@@ -1,13 +1,15 @@
 ---
-title: "TP I : Introduction à la statistique descriptive"
-output: html_notebook
+title: 'TP I : Introduction à la statistique descriptive'
+output:
+  html_document:
+    df_print: paged
 ---
 
 # Introduction
 
 Ce premier TP a pour but de vous familiariser avec les outils de bases de statistiques descriptives. L'idée est d'appliquer les différentes notions vues jusqu'à présent sur des bases de données diverses (quantitatives, qualitatives, discrètes, continues) en de réaliser d'autres analyses statistiques par la suite.
  
-# R\ésumer des exercices vus en cours
+# Résumer des exercices vus en cours
 
 Dans cette section il vous est demandé de reporter les différents exercices vus pendant le cours, pour que vous ayez une trace informatique de ce que vous avez fait.
 
@@ -23,7 +25,7 @@ Le but de cette section de coder des fonctions relatives à des calculs de stati
 
 ## Calcul des fréquences à partir des effectifs
 
-\'Ecrire une fonction qui, à partir des effectifs, calcule les fréquences.
+Écrire une fonction qui, à partir des effectifs, calcule les fréquences.
 
 ```{r}
 frequences <- function(effectifs){
@@ -40,7 +42,7 @@ frequences <- function(effectifs){
 
 ## Centrage d'une variable
 
-\'Ecrire une fonction qui centre une série statistique.
+Écrire une fonction qui centre une série statistique.
 
 ```{r}
 centrer <- function(x){
@@ -57,7 +59,7 @@ centrer <- function(x){
 
 ## Réduction d'une variable
 
-\'Ecrire une fonction qui réduit une série statistique.
+Écrire une fonction qui réduit une série statistique.
 
 ```{r}
 reduire <- function(x){
@@ -73,7 +75,7 @@ reduire <- function(x){
 
 ## Centrage et réduction d'une variable
 
-\'Ecrire une fonction qui réduit une série statistique.
+Écrire une fonction qui normalise (centre et réduit) une série statistique.
 
 ```{r}
 centrer_reduire <- function(x){
@@ -89,7 +91,7 @@ centrer_reduire <- function(x){
 
 ## Calcul de la moyenne harmonique
 
-\'Ecrire une fonction qui calcule la moyenne harmonique d'une série statistique.
+Écrire une fonction qui calcule la moyenne harmonique d'une série statistique.
 
 ```{r}
 mean.harmonic <- function(x){
@@ -105,7 +107,7 @@ mean.harmonic <- function(x){
 
 ## Calcul de la moyenne géométrique
 
-\'Ecrire une fonction qui calcule la moyenne géométrique d'une série statistique.
+Écrire une fonction qui calcule la moyenne géométrique d'une série statistique.
 
 ```{r}
 mean.geometric <- function(x){
@@ -121,7 +123,7 @@ mean.geometric <- function(x){
 
 ## Mise à jour de la moyenne "en ligne"
 
-\'Ecrire une fonction qui met à jour la moyenne arithmétique lorsqu'un nouvel élément arrive.
+Écrire une fonction qui met à jour la moyenne arithmétique lorsqu'un nouvel élément arrive.
 
 ```{r}
 update.mean <- function(var_1, ...){
@@ -138,7 +140,7 @@ update.mean <- function(var_1, ...){
 
 ## Mise à jour de la variance "en ligne"
 
-\'Ecrire une fonction qui met à jour la variance lorsqu'un nouvel élément arrive.
+Écrire une fonction qui met à jour la variance lorsqu'un nouvel élément arrive.
 
 ```{r}
 update.variance <- function(var_1, ...){
@@ -156,11 +158,16 @@ update.variance <- function(var_1, ...){
 # Exercices sur données réelles
 
 Pour chaque des exemples suivants, vous devrez :
-- Faire un résumé explicatif de la base de données
-- Décrire les différentes variables présentes
-- Calculer les statistiques descriptives pertinentes
-- Tracer le graphes correspondants
-- Essayer de faire resortir des informations pertinentes des indicateurs précédents.
+
+* Faire un résumé explicatif de la base de données
+
+* Décrire les différentes variables présentes
+
+* Calculer les statistiques descriptives pertinentes
+
+* Tracer le graphes correspondants (si possible avec `plotly` !)
+
+* Essayer de faire resortir des informations pertinentes des indicateurs précédents.
 
 ## Données Iris
 
