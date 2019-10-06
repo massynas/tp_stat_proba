@@ -1,0 +1,239 @@
+---
+title: 'TP I : Introduction à la statistique descriptive'
+output:
+  html_document:
+    df_print: paged
+---
+
+# Introduction
+
+Ce premier TP a pour but de vous familiariser avec les outils de bases de statistiques descriptives. L'idée est d'appliquer les différentes notions vues jusqu'à présent sur des bases de données diverses (quantitatives, qualitatives, discrètes, continues) en de réaliser d'autres analyses statistiques par la suite.
+ 
+# Résumer des exercices vus en cours
+
+Dans cette section il vous est demandé de reporter les différents exercices vus pendant le cours, pour que vous ayez une trace informatique de ce que vous avez fait.
+
+<--- Vos exercices ici --->
+
+```{r}
+# Les codes associés ici
+```
+
+# Exercices d'approndissement
+
+Le but de cette section de coder des fonctions relatives à des calculs de statistiques qui ne sont pas disponibles dans les librairies standards afin de mieux appréhender les notions vues en cours
+
+## Calcul des fréquences à partir des effectifs
+
+Écrire une fonction qui, à partir des effectifs, calcule les fréquences.
+
+```{r}
+frequences <- function(effectifs){
+  # Votre code 
+  valeurs = 0
+  return(valeurs)
+}
+```
+
+```{r}
+# Votre code test ici
+```
+
+
+## Centrage d'une variable
+
+Écrire une fonction qui centre une série statistique.
+
+```{r}
+centrer <- function(x){
+  # Votre code 
+  var_centree = 0
+  return(var_centree)
+}
+```
+
+```{r}
+# Votre code test ici
+```
+
+
+## Réduction d'une variable
+
+Écrire une fonction qui réduit une série statistique.
+
+```{r}
+reduire <- function(x){
+  # Votre code 
+  var_reduite = 0
+  return(var_reduite)
+}
+```
+
+```{r}
+# Votre code test ici
+```
+
+## Centrage et réduction d'une variable
+
+Écrire une fonction qui normalise (centre et réduit) une série statistique.
+
+```{r}
+centrer_reduire <- function(x){
+  # Votre code 
+  var_reduite = 0
+  return(var_reduite)
+}
+```
+
+```{r}
+# Votre code test ici
+```
+
+## Calcul de la moyenne harmonique
+
+Écrire une fonction qui calcule la moyenne harmonique d'une série statistique.
+
+```{r}
+mean.harmonic <- function(x){
+  # Votre code 
+  moyenne = 0
+  return(moyenne)
+}
+```
+
+```{r}
+# Votre code test ici
+```
+
+## Calcul de la moyenne géométrique
+
+Écrire une fonction qui calcule la moyenne géométrique d'une série statistique.
+
+```{r}
+mean.geometric <- function(x){
+  # Votre code 
+  moyenne = 0
+  return(moyenne)
+}
+```
+
+```{r}
+# Votre code test ici
+```
+
+## Mise à jour de la moyenne "en ligne"
+
+Écrire une fonction qui met à jour la moyenne arithmétique lorsqu'un nouvel élément arrive.
+
+```{r}
+update.mean <- function(var_1, ...){
+  # Votre code 
+  new_mean = 0
+  return(new_mean)
+}
+```
+
+```{r}
+# Votre code test ici
+```
+
+
+## Mise à jour de la variance "en ligne"
+
+Écrire une fonction qui met à jour la variance lorsqu'un nouvel élément arrive.
+
+```{r}
+update.variance <- function(var_1, ...){
+  # Votre code 
+  new_variance = 0
+  return(new_variance)
+}
+```
+
+```{r}
+# Votre code test ici
+```
+
+
+# Exercices sur données réelles
+
+Pour chaque des exemples suivants, vous devrez :
+
+* Faire un résumé explicatif de la base de données
+
+* Décrire les différentes variables présentes
+
+* Calculer les statistiques descriptives pertinentes
+
+* Tracer le graphes correspondants (si possible avec `plotly` !)
+
+* Essayer de faire resortir des informations pertinentes des indicateurs précédents.
+
+## Données Iris
+
+Ce jeu de données est accessible dans l'objet R `iris`, dont la documentation est accessible [ici](https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html).
+
+<--- Votre résumé --->
+
+```{r}
+# Analyse descriptive
+# Graphique
+```
+
+<--- Votre analyse --->
+
+## Données Old Faithful
+
+Ce jeu de données est accessible dans l'objet R `faithful`, dont la documentation est accessible [ici](https://vincentarelbundock.github.io/Rdatasets/doc/datasets/faithful.html).
+
+<--- Votre résumé --->
+
+```{r}
+# Analyse descriptive
+# Graphique
+```
+
+<--- Votre analyse --->
+
+## Données MTCars
+
+Ce jeu de données est accessible dans l'objet R `mtcars`, dont la documentation est accessible [ici](https://vincentarelbundock.github.io/Rdatasets/doc/datasets/mtcars.html).
+
+<--- Votre résumé --->
+
+```{r}
+# Analyse descriptive
+# Graphique
+```
+
+<--- Votre analyse --->
+
+## Données EuStockMarkets
+
+Ce jeu de données est accessible dans l'objet R `EuStockMarkets`, dont la documentation est accessible [ici](https://vincentarelbundock.github.io/Rdatasets/doc/datasets/EuStockMarkets.html).
+
+<--- Votre résumé --->
+
+```{r}
+# Analyse descriptive
+# Graphique
+```
+
+<--- Votre analyse --->
+
+## Données banking crises
+
+Ce jeu de données accessible sur le net, et téléchargeable de la manière suivante :
+
+```{r}
+bankingCrises = read.csv("https://vincentarelbundock.github.io/Rdatasets/csv/Ecdat/bankingCrises.csv")
+```
+
+<--- Votre résumé --->
+
+```{r}
+# Analyse descriptive
+# Graphique
+```
+
+<--- Votre analyse --->
