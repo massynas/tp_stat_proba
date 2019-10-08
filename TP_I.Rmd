@@ -15,9 +15,63 @@ Dans cette section il vous est demandé de reporter les différents exercices vu
 
 <--- Vos exercices ici --->
 
-```{r}
-# Les codes associés ici
-```
+Exercice 1:
+Quel est le type de ces variables ?
+Âge d’un individu: Quantitative exemple:(1 an , 2ans ...100 ans)
+Gentillesse d’un individu: soit qualitative : ordinale (oui ou non) soit quantitative par pourcentage pour chaque individue
+Température d’un local: qualitative ordinale (chaud, froid) ou bien quantitative continue (degré en celsius par exemple)
+Prix du pain: quantitative (50 centimes, 60 centimes)ou bien qualitative (prix bas/ prix elevé)
+Couleur des yeux de votre voisin: qualitative (categoriale (couleur bleu noir vert ...))
+Puissance d’un son soit qualitative (ordinale fort ou bas) soit quantitative (le calculer en decibel)
+Intelligence d’une personne(quantitative (exemple le taux d'intelligence par QI)) qualitative (oui ou non)
+Situation d’un appartement dans votre immeuble qualitative (ordinale exemple: etage 1 ou 2 ou rez de chaussée ou bien grande petite)
+Situation socio-professionnelle de votre oncle: qualitative (ordinale chomeur / employé )
+Compréhension de cette question: qualitative ( ordinale: oui ou non)
+***********
+Exercice 2:
+Créer ce tableau sous R:
+df<- data.frame(Taille = c(1.60,1.62,1.64,1.62,1.67), Poids = c(48, 57, 56, 52, 62))
+df
+**ajouter une colone imc ****
+df$imc <- df$Poids/(df$Taille*df$Taille)
+df
+ont obtien a la fin le resultat suivant:
+ Taille Poids      imc
+1   1.60    48 18.75000
+2   1.62    57 21.71925
+3   1.64    56 20.82094
+4   1.62    52 19.81405
+5   1.67    62 22.23099
+**************
+Exercice3:
+Démonstration :Les valeurs centrées ont une moyenne nulle :xc=0(3)
+on a xci=xi−x(barre) ont developpe cette equation pour obtenir une equation lineaire et aprés ont une une simplification de n et x pour qu'il nous reste a la fin -1 donc ont conclure que notre equation de depart = 0
+**********
+Exercice 4:
+Théorème de König-HuygensSoit une valeur de centralité quelconquec, alors :1/n n∑i=1(xi−c)2=1nn∑i=1(xi−x)2+ (x−c)2(14)
+Exercice:
+Démontrer ce théorème : developpement de la theoreme
+on déduire que la propriété sur l’expressionde la variance est optimal
+***********
+Exercice 5:
+ x <- c(3,5,6,7,8,9,11)
+> mean(x)
+[1] 7
+> var(x)
+[1] 7
+>
+> y <- c(6,6,6,6,6,6,13)
+> mean(y)
+[1] 7
+> var(y)
+[1] 7
+>
+> z <- c(1,8,8,8,8,8,8)
+> mean(z)
+[1] 7
+> var(z)
+[1] 7
+>on deduire que il ont les meme valeurs de moyenne et variance.
 
 # Exercices d'approndissement
 
@@ -30,30 +84,36 @@ Le but de cette section de coder des fonctions relatives à des calculs de stati
 ```{r}
 frequences <- function(effectifs){
   # Votre code 
-  valeurs = 0
+  # les effectifs on lese a pris comme tableau 
+  valeurs <- table(effectifs)*100/sum(table(effectifs))
+  # la valeurs c'est le pourcentage de nombre d'occurence 
   return(valeurs)
 }
 ```
 
 ```{r}
 # Votre code test ici
+test0 <- c(1,2,3,4,4,9,7,8 , 9 ,9 ,9)
+valeur0 <- frequences(test0)
+valeur0
 ```
 
 
-## Centrage d'une variable
+## Centrage d'une variable statistique
 
 Écrire une fonction qui centre une série statistique.
 
 ```{r}
 centrer <- function(x){
-  # Votre code 
-  var_centree = 0
+  # Votre code  x -> tableau 
+  var_centree <-  x - mean(x)
   return(var_centree)
 }
 ```
 
 ```{r}
-# Votre code test ici
+test1 <- c(1,3,5,4,6)
+centrer(test1)
 ```
 
 
@@ -64,13 +124,15 @@ centrer <- function(x){
 ```{r}
 reduire <- function(x){
   # Votre code 
-  var_reduite = 0
+  var_reduite <-x / sd(x)
   return(var_reduite)
 }
 ```
 
 ```{r}
 # Votre code test ici
+test3 <- c(1,3,5,4,6)
+reduire(test3)
 ```
 
 ## Centrage et réduction d'une variable
@@ -80,13 +142,16 @@ reduire <- function(x){
 ```{r}
 centrer_reduire <- function(x){
   # Votre code 
-  var_reduite = 0
+  
+  var_reduite = mean(x) /sd(x)
   return(var_reduite)
 }
 ```
 
 ```{r}
 # Votre code test ici
+test4 <- c(1,3,5,4,6)
+centrer_reduire(test4)
 ```
 
 ## Calcul de la moyenne harmonique
@@ -96,13 +161,15 @@ centrer_reduire <- function(x){
 ```{r}
 mean.harmonic <- function(x){
   # Votre code 
-  moyenne = 0
+  moyenne = length(x) / sum(1/x)
   return(moyenne)
 }
 ```
 
 ```{r}
 # Votre code test ici
+test5 <- c(1,2,3,4,5)
+mean.harmonic(test5)
 ```
 
 ## Calcul de la moyenne géométrique
@@ -112,13 +179,16 @@ mean.harmonic <- function(x){
 ```{r}
 mean.geometric <- function(x){
   # Votre code 
-  moyenne = 0
+  moyenne = sqrt{length(x)}(prod(x))
   return(moyenne)
 }
 ```
 
 ```{r}
 # Votre code test ici
+test6 <- c(1,1.5, 2)
+mean.geometric(test6)
+
 ```
 
 ## Mise à jour de la moyenne "en ligne"
@@ -126,15 +196,18 @@ mean.geometric <- function(x){
 Écrire une fonction qui met à jour la moyenne arithmétique lorsqu'un nouvel élément arrive.
 
 ```{r}
-update.mean <- function(var_1, ...){
-  # Votre code 
-  new_mean = 0
+update.mean <- function(var_1, x){
+  # Votre code
+  t <- length(x)
+  new_mean = (mean(x)*t + var_1) /(t+1)
   return(new_mean)
 }
 ```
 
 ```{r}
 # Votre code test ici
+test7 <- c(12, 14, 18)
+update.mean(13 , test7)
 ```
 
 
@@ -143,15 +216,21 @@ update.mean <- function(var_1, ...){
 Écrire une fonction qui met à jour la variance lorsqu'un nouvel élément arrive.
 
 ```{r}
-update.variance <- function(var_1, ...){
+update.variance <- function(var_1, x){
   # Votre code 
-  new_variance = 0
+  t <- length(x)
+  m <- mean(x)
+  vx <-  (t-1) * var(x) / t
+  new_variance = (t * vx) / (t+1) + t * ((var_1 - m) /(t+1))^2
   return(new_variance)
 }
 ```
 
 ```{r}
 # Votre code test ici
+test8 <- c(1,2,3,4)
+update.variance(10 , test8)
+
 ```
 
 
