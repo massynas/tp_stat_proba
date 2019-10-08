@@ -30,11 +30,21 @@ Compréhension de cette question: qualitative ( ordinale: oui ou non)
 ***********
 Exercice 2:
 Créer ce tableau sous R:
+
+ 
+
+
+```{r}
+# Les codes associés 
 df<- data.frame(Taille = c(1.60,1.62,1.64,1.62,1.67), Poids = c(48, 57, 56, 52, 62))
 df
+```
 **ajouter une colone imc ****
+```{r}
+# Les codes associés 
 df$imc <- df$Poids/(df$Taille*df$Taille)
 df
+```
 ont obtien a la fin le resultat suivant:
  Taille Poids      imc
 1   1.60    48 18.75000
@@ -50,28 +60,26 @@ on a xci=xi−x(barre) ont developpe cette equation pour obtenir une equation li
 Exercice 4:
 Théorème de König-HuygensSoit une valeur de centralité quelconquec, alors :1/n n∑i=1(xi−c)2=1nn∑i=1(xi−x)2+ (x−c)2(14)
 Exercice:
-Démontrer ce théorème : developpement de la theoreme
+Démontrer ce théorème : developpement de la theoreme 
 on déduire que la propriété sur l’expressionde la variance est optimal
 ***********
 Exercice 5:
- x <- c(3,5,6,7,8,9,11)
-> mean(x)
-[1] 7
-> var(x)
-[1] 7
->
-> y <- c(6,6,6,6,6,6,13)
-> mean(y)
-[1] 7
-> var(y)
-[1] 7
->
-> z <- c(1,8,8,8,8,8,8)
-> mean(z)
-[1] 7
-> var(z)
-[1] 7
->on deduire que il ont les meme valeurs de moyenne et variance.
+```{r}
+# Les codes associés 
+x <- c(3,5,6,7,8,9,11)
+mean(x)
+var(x)
+y <- c(6,6,6,6,6,6,13)
+mean(y)
+var(y)
+z <- c(1,8,8,8,8,8,8)
+mean(z)
+var(z)
+```
+
+ 
+
+on deduire que il ont les meme valeurs de moyenne et variance.
 
 # Exercices d'approndissement
 
@@ -179,14 +187,14 @@ mean.harmonic(test5)
 ```{r}
 mean.geometric <- function(x){
   # Votre code 
-  moyenne = sqrt{length(x)}(prod(x))
+  moyenne = sqrt(prod(x))
   return(moyenne)
 }
 ```
 
 ```{r}
 # Votre code test ici
-test6 <- c(1,1.5, 2)
+test6 <- c(1,1.5,2)
 mean.geometric(test6)
 
 ```
@@ -252,14 +260,41 @@ Pour chaque des exemples suivants, vous devrez :
 
 Ce jeu de données est accessible dans l'objet R `iris`, dont la documentation est accessible [ici](https://vincentarelbundock.github.io/Rdatasets/doc/datasets/iris.html).
 
+## Données Iris
+
+ 
+
+Ce jeu de données est accessible dans l'objet R `iris`, dont la documentation est accessible [ici]().
+
+ 
+
 <--- Votre résumé --->
+jeu de donnees d'iris qui donne les mesures en centimètres des variables longueur et largeur des sépales et longueur et largeur des pétales, respectivement, pour 50 fleurs de chacune des 3 espèces d'iris. Les espèces sont Iris setosa , versicolor et virginica .
+les differentes variables presentes dans ce jeux sont Sepal L. Sepal W. Petal L. Petal W et Species
+
 
 ```{r}
 # Analyse descriptive
+####Representation des especes d’Iris:
+levels(iris$Species)
+summary(iris$Species)
+sort(iris$Petal.Length)
 # Graphique
+pie(table(iris$Species))
+barplot(table(iris$Species))
+hist(iris$Petal.Length, col = grey(0.6), main = "Histogramme")
+## on peut alors representerla densite des points.
+library(MASS)
+densite <- kde2d(iris$Petal.Length, iris$Petal.Width)
+filled.contour(densite, color = topo.colors, xlab = "Longueur du petale",
+ylab = "Largeur du petale")
+###◘
+spiris <- unclass(iris$Species)
+pairs(iris[1:4], main = "Les iris de Fisher -- 3 especes", pch = c(21,
+25, 24)[spiris], bg = c("red", "green3", "blue")[spiris], las = 1,
+gap = 0, labels = c("Longueur\nSepale", "Largeur\nSepale", "Longueur\nPetale",
+"Largeur\nPetale"))
 ```
-
-<--- Votre analyse --->
 
 ## Données Old Faithful
 
@@ -269,7 +304,15 @@ Ce jeu de données est accessible dans l'objet R `faithful`, dont la documentati
 
 ```{r}
 # Analyse descriptive
+
+#Temps d'attente entre les éruptions et la durée de l'éruption du geyser Old #Faithful dans le parc national de Yellowstone
+
+
 # Graphique
+
+plot(faithful$eruptions , faithful$waiting, type = "p", col = "red", lwd = 2,
+     main = "Temps d'attente entre les éruptions et la durée de l'éruption " , ylab = " Waiting time to next eruption (min)" , xlab = "Eruption time (min)" )
+
 ```
 
 <--- Votre analyse --->
@@ -277,15 +320,34 @@ Ce jeu de données est accessible dans l'objet R `faithful`, dont la documentati
 ## Données MTCars
 
 Ce jeu de données est accessible dans l'objet R `mtcars`, dont la documentation est accessible [ici](https://vincentarelbundock.github.io/Rdatasets/doc/datasets/mtcars.html).
-
 <--- Votre résumé --->
-
+Ce jeu de donnees represente la consommation de carburant et 10 aspects de la conception et des performances de 32 voitures (modèles de 1973 à 1974)
 ```{r}
 # Analyse descriptive
+###○ variable quantitative
+min(mtcars$mpg)
+max(mtcars$mpg)
+mean(mtcars$mpg)
+median(mtcars$mpg)
+quantile(mtcars$mpg, probs= 0.99)
+summary(mtcars$mpg)
+###variable qualitative:
+summary(mtcars$cyl)
+table(mtcars$cyl)
 # Graphique
+##variable quantitative
+boxplot(mtcars$mpg)
+qqnorm(mtcars$mpg)
+qqline(mtcars$mpg)
+##variable qualitative
+barplot(table(mtcars$cyl))
 ```
 
+ 
+
 <--- Votre analyse --->
+Pour ce jeux j'ai commencer de calculer le minimum, le maximum, la moyenne le median et la quantile d'une valeurs quantitative , 
+le graphe represente la comparaison de  la distribution de l’échantillon avec la distribution théorique d’une loi normale à l’aide du QQ-plot
 
 ## Données EuStockMarkets
 
@@ -295,11 +357,21 @@ Ce jeu de données est accessible dans l'objet R `EuStockMarkets`, dont la docum
 
 ```{r}
 # Analyse descriptive
+head(EuStockMarkets)
 # Graphique
+Dax.lag= stats::lag(EuStockMarkets[,"DAX"],-1)
+Smi.lag= stats::lag(EuStockMarkets[,"SMI"],-1)
+Cac.lag= stats::lag(EuStockMarkets[,"CAC"],-1)
+
+df=cbind(FTSE=EuStockMarkets[,4], Dax.lag, Smi.lag, Cac.lag)
+train= window(df, start=c(1991,131), end=c(1997,260))
+test=window(df, start=c(1998,1))
+
+plot(df , xlab= "Year"  , main = "les principaux indices boursiers européens") 
 ```
 
 <--- Votre analyse --->
-
+L'ensemble de données contient les cours de clôture quotidiens des principaux indices boursiers européens: Allemagne DAX (Ibis), Suisse SMI, France CAC et UK FTSE. Les données sont échantillonnées en heures d’affaires , on vois bien la croissances des des pricipaux bourse malgré une petite chute a partir des annee 1988 
 ## Données banking crises
 
 Ce jeu de données accessible sur le net, et téléchargeable de la manière suivante :
